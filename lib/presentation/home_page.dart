@@ -10,18 +10,17 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return LocationContainer(
-        builder: (BuildContext context, Location? location) {
+    return LocationContainer(builder: (BuildContext context, Location? location) {
       return Scaffold(
         appBar: AppBar(
-          title: Text(location!.city),
+          title: Text(location != null ? location.city : 'No Data'),
         ),
         body: Column(
           children: <Widget>[
             WeatherContainer(builder: (BuildContext context, Weather? weather) {
-              return Text('lat ${weather!.temp}');
+              return Text('temperature ${weather != null ? weather.temp : "No Data"}');
             }),
-            Text('lon ${location.lon}'),
+            // Text('lon ${location.lon}'),
           ],
         ),
       );

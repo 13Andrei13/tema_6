@@ -3,6 +3,7 @@ import 'package:flutter_redux/flutter_redux.dart';
 import 'package:http/http.dart';
 import 'package:redux/redux.dart';
 import 'package:tema6_weather/actions/get_location.dart';
+import 'package:tema6_weather/actions/get_weather.dart';
 import 'package:tema6_weather/data/location_api.dart';
 import 'package:tema6_weather/data/weather_api.dart';
 import 'package:tema6_weather/middleware/location_middleware.dart';
@@ -11,21 +12,17 @@ import 'package:tema6_weather/presentation/home_page.dart';
 import 'package:tema6_weather/reducer/reducer.dart';
 
 void main() {
-  const String apiUrlLocation = 'http://ip-api.com/json/24.48.0.1';
+  const String apiUrlLocation = 'http://ip-api.com/json/?fields=58367';
 
-  const String apiUrlWeather =
-      'http://api.weatherapi.com/v1/current.json?key=bee174576b854d7c929101501211207';
+  const String apiUrlWeather = 'http://api.weatherapi.com/v1/current.json?key=bee174576b854d7c929101501211207';
 
   final Client client = Client();
 
-  final LocationApi locationApi =
-      LocationApi(apiUrl: apiUrlLocation, client: client);
+  final LocationApi locationApi = LocationApi(apiUrl: apiUrlLocation, client: client);
 
-  final WeatherApi weatherApi =
-      WeatherApi(apiUrl: apiUrlWeather, client: client);
+  final WeatherApi weatherApi = WeatherApi(apiUrl: apiUrlWeather, client: client);
 
-  final AppMiddleware appMiddleware =
-      AppMiddleware(locationApi: locationApi, weatherApi: weatherApi);
+  final AppMiddleware appMiddleware = AppMiddleware(locationApi: locationApi, weatherApi: weatherApi);
 
   final Store<AppState> store = Store<AppState>(
     reducer,
@@ -34,6 +31,7 @@ void main() {
   );
 
   store.dispatch(GetLocation());
+  store.dispatch(GetWeather());
 
   runApp(MyApp(store: store));
 }

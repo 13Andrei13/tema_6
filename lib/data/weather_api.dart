@@ -19,10 +19,8 @@ class WeatherApi {
       throw StateError(response.body);
     }
 
-    final Map<String, dynamic> body =
-        jsonDecode(response.body) as Map<String, dynamic>;
-    final Map<String, dynamic> current =
-        body['current'] as Map<String, dynamic>;
+    final Map<String, dynamic> body = jsonDecode(response.body) as Map<String, dynamic>;
+    final Map<String, dynamic> current = body['current'] as Map<String, dynamic>;
 
     return Weather.fromJson(current);
   }
