@@ -9,8 +9,6 @@ Reducer<AppState> reducer = combineReducers(<Reducer<AppState>>[
   },
   TypedReducer<AppState, GetLocationSuccessful>(_getLocationSuccessful),
   TypedReducer<AppState, GetWeatherSuccessful>(_getWeatherSuccessful),
-  //TypedReducer<AppState, GetLocationError>(_getLocationError),
-  //TypedReducer<AppState, GetLocation>(_getLocation),
 ]);
 
 AppState _getLocationSuccessful(AppState state, GetLocationSuccessful action) {
@@ -18,16 +16,6 @@ AppState _getLocationSuccessful(AppState state, GetLocationSuccessful action) {
     b.location.replace(action.location);
   });
 }
-
-/*
-  AppState _getLocationError(AppState state, GetLocationError action) {
-    return state.rebuild((AppStateBuilder b) {
-      b.error = action.error.toString();
-    });
-  }
-  */
-
-// AppState _getLocation(AppState state, GetLocation action) {}
 
 AppState _getWeatherSuccessful(AppState state, GetWeatherSuccessful action) {
   return state.rebuild((AppStateBuilder b) {

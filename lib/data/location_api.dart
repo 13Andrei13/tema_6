@@ -19,15 +19,6 @@ class LocationApi {
       throw StateError(response.body);
     }
 
-/*
-  final Map<String, dynamic> body =
-      jsonDecode(response.body) as Map<String, dynamic>;
-  final Location location = Location.fromJson(body);
-
-  return location;
-*/
-//echiv cu =>>>>
-
     return Location.fromJson(jsonDecode(response.body));
   }
 }
