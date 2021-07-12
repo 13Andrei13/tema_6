@@ -36,7 +36,7 @@ class AppMiddleware {
     next(action);
     try {
       final Weather weather =
-      await _weatherApi.getWeather(store.state.location != null ? store.state.location!.city : 'Bucharest');
+          await _weatherApi.getWeather(store.state.location != null ? store.state.location!.city : 'Bucharest');
       store.dispatch(GetWeatherSuccessful(weather));
     } catch (error) {
       store.dispatch(GetWeatherError(error));

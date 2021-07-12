@@ -5,7 +5,7 @@ import 'package:tema6_weather/models/app_state.dart';
 
 Reducer<AppState> reducer = combineReducers(<Reducer<AppState>>[
   (AppState state, dynamic action) {
-  print(action);
+    print(action);
     return state;
   },
   TypedReducer<AppState, GetLocationSuccessful>(_getLocationSuccessful),
