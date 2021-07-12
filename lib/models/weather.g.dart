@@ -21,7 +21,8 @@ class _$WeatherSerializer implements StructuredSerializer<Weather> {
       'temp_c',
       serializers.serialize(object.temp, specifiedType: const FullType(double)),
       'last_updated',
-      serializers.serialize(object.updated, specifiedType: const FullType(String)),
+      serializers.serialize(object.update,
+          specifiedType: const FullType(String)),
       'wind_kph',
       serializers.serialize(object.wind, specifiedType: const FullType(double)),
     ];
@@ -41,13 +42,16 @@ class _$WeatherSerializer implements StructuredSerializer<Weather> {
       final Object? value = iterator.current;
       switch (key) {
         case 'temp_c':
-          result.temp = serializers.deserialize(value, specifiedType: const FullType(double)) as double;
+          result.temp = serializers.deserialize(value,
+              specifiedType: const FullType(double)) as double;
           break;
         case 'last_updated':
-          result.updated = serializers.deserialize(value, specifiedType: const FullType(String)) as String;
+          result.update = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
           break;
         case 'wind_kph':
-          result.wind = serializers.deserialize(value, specifiedType: const FullType(double)) as double;
+          result.wind = serializers.deserialize(value,
+              specifiedType: const FullType(double)) as double;
           break;
       }
     }
@@ -60,20 +64,23 @@ class _$Weather extends Weather {
   @override
   final double temp;
   @override
-  final String updated;
+  final String update;
   @override
   final double wind;
 
-  factory _$Weather([void Function(WeatherBuilder)? updates]) => (new WeatherBuilder()..update(updates)).build();
+  factory _$Weather([void Function(WeatherBuilder)? updates]) =>
+      (new WeatherBuilder()..update(updates)).build();
 
-  _$Weather._({required this.temp, required this.updated, required this.wind}) : super._() {
+  _$Weather._({required this.temp, required this.update, required this.wind})
+      : super._() {
     BuiltValueNullFieldError.checkNotNull(temp, 'Weather', 'temp');
-    BuiltValueNullFieldError.checkNotNull(updated, 'Weather', 'updated');
+    BuiltValueNullFieldError.checkNotNull(update, 'Weather', 'update');
     BuiltValueNullFieldError.checkNotNull(wind, 'Weather', 'wind');
   }
 
   @override
-  Weather rebuild(void Function(WeatherBuilder) updates) => (toBuilder()..update(updates)).build();
+  Weather rebuild(void Function(WeatherBuilder) updates) =>
+      (toBuilder()..update(updates)).build();
 
   @override
   WeatherBuilder toBuilder() => new WeatherBuilder()..replace(this);
@@ -81,17 +88,23 @@ class _$Weather extends Weather {
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is Weather && temp == other.temp && updated == other.updated && wind == other.wind;
+    return other is Weather &&
+        temp == other.temp &&
+        update == other.update &&
+        wind == other.wind;
   }
 
   @override
   int get hashCode {
-    return $jf($jc($jc($jc(0, temp.hashCode), updated.hashCode), wind.hashCode));
+    return $jf($jc($jc($jc(0, temp.hashCode), update.hashCode), wind.hashCode));
   }
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('Weather')..add('temp', temp)..add('updated', updated)..add('wind', wind))
+    return (newBuiltValueToStringHelper('Weather')
+          ..add('temp', temp)
+          ..add('update', update)
+          ..add('wind', wind))
         .toString();
   }
 }
@@ -103,9 +116,9 @@ class WeatherBuilder implements Builder<Weather, WeatherBuilder> {
   double? get temp => _$this._temp;
   set temp(double? temp) => _$this._temp = temp;
 
-  String? _updated;
-  String? get updated => _$this._updated;
-  set updated(String? updated) => _$this._updated = updated;
+  String? _update;
+  String? get update => _$this._update;
+  set update(String? update) => _$this._update = update;
 
   double? _wind;
   double? get wind => _$this._wind;
@@ -117,7 +130,7 @@ class WeatherBuilder implements Builder<Weather, WeatherBuilder> {
     final $v = _$v;
     if ($v != null) {
       _temp = $v.temp;
-      _updated = $v.updated;
+      _update = $v.update;
       _wind = $v.wind;
       _$v = null;
     }
@@ -139,9 +152,12 @@ class WeatherBuilder implements Builder<Weather, WeatherBuilder> {
   _$Weather build() {
     final _$result = _$v ??
         new _$Weather._(
-            temp: BuiltValueNullFieldError.checkNotNull(temp, 'Weather', 'temp'),
-            updated: BuiltValueNullFieldError.checkNotNull(updated, 'Weather', 'updated'),
-            wind: BuiltValueNullFieldError.checkNotNull(wind, 'Weather', 'wind'));
+            temp:
+                BuiltValueNullFieldError.checkNotNull(temp, 'Weather', 'temp'),
+            update: BuiltValueNullFieldError.checkNotNull(
+                update, 'Weather', 'update'),
+            wind:
+                BuiltValueNullFieldError.checkNotNull(wind, 'Weather', 'wind'));
     replace(_$result);
     return _$result;
   }
