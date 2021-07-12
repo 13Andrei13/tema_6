@@ -11,5 +11,4 @@ part 'serializers.g.dart';
   Location,
   Weather,
 ])
-Serializers serializers =
-    (_$serializers.toBuilder()..addPlugin(StandardJsonPlugin())).build();
+Serializers serializers = (_$serializers.toBuilder()..addPlugin(StandardJsonPlugin())).build();

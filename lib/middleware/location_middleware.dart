@@ -8,8 +8,7 @@ import 'package:tema6_weather/models/location.dart';
 import 'package:tema6_weather/models/weather.dart';
 
 class AppMiddleware {
-  AppMiddleware(
-      {required LocationApi locationApi, required WeatherApi weatherApi})
+  AppMiddleware({required LocationApi locationApi, required WeatherApi weatherApi})
       : _locationApi = locationApi,
         _weatherApi = weatherApi;
 
@@ -23,8 +22,7 @@ class AppMiddleware {
     ];
   }
 
-  Future<void> _getLocation(
-      Store<AppState> store, GetLocation action, NextDispatcher next) async {
+  Future<void> _getLocation(Store<AppState> store, GetLocation action, NextDispatcher next) async {
     next(action);
     try {
       final Location location = await _locationApi.getLocation();
@@ -34,11 +32,11 @@ class AppMiddleware {
     }
   }
 
-  Future<void> _getWeather(
-      Store<AppState> store, GetWeather action, NextDispatcher next) async {
+  Future<void> _getWeather(Store<AppState> store, GetWeather action, NextDispatcher next) async {
     next(action);
     try {
-      final Weather weather = await _weatherApi.getWeather('Bucharest');
+      final Weather weather =
+          await _weatherApi.getWeather(store.state.location != null ? store.state.location!.city : 'Bucharest');
       store.dispatch(GetWeatherSuccessful(weather));
     } catch (error) {
       store.dispatch(GetWeatherError(error));

@@ -9,7 +9,7 @@ class GetWeatherSuccessful {
 
   @override
   String toString() {
-    return 'GetWeatherSuccessful{location: $weather}';
+    return 'GetWeatherSuccessful{weather: $weather}';
   }
 }
 
@@ -20,6 +20,6 @@ class GetWeatherError {
 
   @override
   String toString() {
-    return 'GetWeatherError{location: $error}';
+    return 'GetWeatherError{weather: $error}';
   }
 }
