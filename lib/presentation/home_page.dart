@@ -16,8 +16,8 @@ class HomePage extends StatelessWidget {
         ),
         body: Column(
           children: <Widget>[
-            Text('lat ' + location.lat.toString()),
-            Text('lon' + location.lon.toString()),
+            Text('lat ${location.lat}'),
+            Text('lon ${location.lon}'),
           ],
         ),
       );
