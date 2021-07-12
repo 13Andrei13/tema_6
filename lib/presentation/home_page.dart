@@ -8,8 +8,7 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return LocationContainer(
-        builder: (BuildContext context, Location? location) {
+    return LocationContainer(builder: (BuildContext context, Location? location) {
       return Scaffold(
         appBar: AppBar(
           title: Text(location!.city),

@@ -5,20 +5,17 @@ import 'package:tema6_weather/models/app_state.dart';
 import 'package:tema6_weather/models/location.dart';
 
 class AppMiddleware {
-  AppMiddleware({required LocationApi locationApi})
-      : _locationApi = locationApi;
+  AppMiddleware({required LocationApi locationApi}) : _locationApi = locationApi;
 
   final LocationApi _locationApi;
 
   List<Middleware<AppState>> get middleware {
     return <Middleware<AppState>>[
-      TypedMiddleware<AppState, GetLocation>(
-          _getLocation), // AppState -> de unde raspunde si  GetMovies -> unde merge
+      TypedMiddleware<AppState, GetLocation>(_getLocation), // AppState -> de unde raspunde si  GetMovies -> unde merge
     ];
   }
 
-  Future<void> _getLocation(
-      Store<AppState> store, GetLocation action, NextDispatcher next) async {
+  Future<void> _getLocation(Store<AppState> store, GetLocation action, NextDispatcher next) async {
     next(action);
     try {
       final Location location = await _locationApi.getLocation();
