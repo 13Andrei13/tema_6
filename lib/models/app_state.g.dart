@@ -21,11 +21,17 @@ class _$AppStateSerializer implements StructuredSerializer<AppState> {
     Object? value;
     value = object.location;
     if (value != null) {
-      result..add('location')..add(serializers.serialize(value, specifiedType: const FullType(Location)));
+      result
+        ..add('location')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(Location)));
     }
     value = object.weather;
     if (value != null) {
-      result..add('weather')..add(serializers.serialize(value, specifiedType: const FullType(Weather)));
+      result
+        ..add('weather')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(Weather)));
     }
     return result;
   }
@@ -42,10 +48,12 @@ class _$AppStateSerializer implements StructuredSerializer<AppState> {
       final Object? value = iterator.current;
       switch (key) {
         case 'location':
-          result.location.replace(serializers.deserialize(value, specifiedType: const FullType(Location))! as Location);
+          result.location.replace(serializers.deserialize(value,
+              specifiedType: const FullType(Location))! as Location);
           break;
         case 'weather':
-          result.weather.replace(serializers.deserialize(value, specifiedType: const FullType(Weather))! as Weather);
+          result.weather.replace(serializers.deserialize(value,
+              specifiedType: const FullType(Weather))! as Weather);
           break;
       }
     }
@@ -60,12 +68,14 @@ class _$AppState extends AppState {
   @override
   final Weather? weather;
 
-  factory _$AppState([void Function(AppStateBuilder)? updates]) => (new AppStateBuilder()..update(updates)).build();
+  factory _$AppState([void Function(AppStateBuilder)? updates]) =>
+      (new AppStateBuilder()..update(updates)).build();
 
   _$AppState._({this.location, this.weather}) : super._();
 
   @override
-  AppState rebuild(void Function(AppStateBuilder) updates) => (toBuilder()..update(updates)).build();
+  AppState rebuild(void Function(AppStateBuilder) updates) =>
+      (toBuilder()..update(updates)).build();
 
   @override
   AppStateBuilder toBuilder() => new AppStateBuilder()..replace(this);
@@ -73,7 +83,9 @@ class _$AppState extends AppState {
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is AppState && location == other.location && weather == other.weather;
+    return other is AppState &&
+        location == other.location &&
+        weather == other.weather;
   }
 
   @override
@@ -83,7 +95,10 @@ class _$AppState extends AppState {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('AppState')..add('location', location)..add('weather', weather)).toString();
+    return (newBuiltValueToStringHelper('AppState')
+          ..add('location', location)
+          ..add('weather', weather))
+        .toString();
   }
 }
 
@@ -125,7 +140,9 @@ class AppStateBuilder implements Builder<AppState, AppStateBuilder> {
   _$AppState build() {
     _$AppState _$result;
     try {
-      _$result = _$v ?? new _$AppState._(location: _location?.build(), weather: _weather?.build());
+      _$result = _$v ??
+          new _$AppState._(
+              location: _location?.build(), weather: _weather?.build());
     } catch (_) {
       late String _$failedField;
       try {
@@ -134,7 +151,8 @@ class AppStateBuilder implements Builder<AppState, AppStateBuilder> {
         _$failedField = 'weather';
         _weather?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError('AppState', _$failedField, e.toString());
+        throw new BuiltValueNestedFieldError(
+            'AppState', _$failedField, e.toString());
       }
       rethrow;
     }
