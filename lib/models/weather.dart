@@ -8,6 +8,7 @@ part 'weather.g.dart';
 
 abstract class Weather implements Built<Weather, WeatherBuilder> {
   factory Weather([void Function(WeatherBuilder b) updates]) = _$Weather;
+
   factory Weather.fromJson(dynamic json) => serializers.deserializeWith(serializer, json)!;
 
   Weather._();
@@ -17,8 +18,6 @@ abstract class Weather implements Built<Weather, WeatherBuilder> {
 
   @BuiltValueField(wireName: 'last_updated')
   String get updated;
-
-  //Map<String, dynamic> get condition;
 
   @BuiltValueField(wireName: 'wind_kph')
   double get wind;
