@@ -4,7 +4,6 @@ import 'package:http/http.dart';
 import 'package:redux/redux.dart';
 import 'package:redux_epics/redux_epics.dart';
 import 'package:tema6_weather/actions/get_location.dart';
-import 'package:tema6_weather/actions/get_weather.dart';
 import 'package:tema6_weather/data/location_api.dart';
 import 'package:tema6_weather/data/weather_api.dart';
 import 'package:tema6_weather/epics/app_epics.dart';
@@ -34,7 +33,6 @@ void main() {
   );
 
   store.dispatch(GetLocation());
-  store.dispatch(GetWeather());
 
   runApp(MyApp(store: store));
 }

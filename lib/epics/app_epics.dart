@@ -26,7 +26,10 @@ class AppEpics {
   Stream<Object> _getLocation(Stream<GetLocation> actions, EpicStore<AppState> store) {
     return actions
         .asyncMap((GetLocation action) => _locationApi.getLocation())
-        .map<Object>((Location location) => GetLocationSuccessful(location))
+        .expand<Object>((Location location) => [
+              GetLocationSuccessful(location),
+              GetWeather(),
+            ])
         .onErrorReturnWith((Object error, StackTrace stackTrace) => GetLocationError(error));
   }
 
