@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:http/http.dart';
 import 'package:redux/redux.dart';
+import 'package:redux_epics/redux_epics.dart';
 import 'package:tema6_weather/actions/get_location.dart';
 import 'package:tema6_weather/actions/get_weather.dart';
 import 'package:tema6_weather/data/location_api.dart';
 import 'package:tema6_weather/data/weather_api.dart';
-import 'package:tema6_weather/middleware/location_middleware.dart';
+import 'package:tema6_weather/epics/app_epics.dart';
 import 'package:tema6_weather/models/app_state.dart';
 import 'package:tema6_weather/presentation/home_page.dart';
 import 'package:tema6_weather/reducer/reducer.dart';
@@ -22,12 +23,14 @@ void main() {
 
   final WeatherApi weatherApi = WeatherApi(apiUrl: apiUrlWeather, client: client);
 
-  final AppMiddleware appMiddleware = AppMiddleware(locationApi: locationApi, weatherApi: weatherApi);
+  final AppEpics epic = AppEpics(locationApi: locationApi, weatherApi: weatherApi);
 
   final Store<AppState> store = Store<AppState>(
     reducer,
     initialState: AppState(),
-    middleware: appMiddleware.middleware,
+    middleware: <Middleware<AppState>>[
+      EpicMiddleware<AppState>(epic.epics),
+    ],
   );
 
   store.dispatch(GetLocation());

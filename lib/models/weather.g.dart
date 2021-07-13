@@ -21,7 +21,8 @@ class _$WeatherSerializer implements StructuredSerializer<Weather> {
       'temp_c',
       serializers.serialize(object.temp, specifiedType: const FullType(double)),
       'last_updated',
-      serializers.serialize(object.updated, specifiedType: const FullType(String)),
+      serializers.serialize(object.updated,
+          specifiedType: const FullType(String)),
       'wind_kph',
       serializers.serialize(object.wind, specifiedType: const FullType(double)),
     ];
@@ -41,13 +42,16 @@ class _$WeatherSerializer implements StructuredSerializer<Weather> {
       final Object? value = iterator.current;
       switch (key) {
         case 'temp_c':
-          result.temp = serializers.deserialize(value, specifiedType: const FullType(double)) as double;
+          result.temp = serializers.deserialize(value,
+              specifiedType: const FullType(double)) as double;
           break;
         case 'last_updated':
-          result.updated = serializers.deserialize(value, specifiedType: const FullType(String)) as String;
+          result.updated = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
           break;
         case 'wind_kph':
-          result.wind = serializers.deserialize(value, specifiedType: const FullType(double)) as double;
+          result.wind = serializers.deserialize(value,
+              specifiedType: const FullType(double)) as double;
           break;
       }
     }
@@ -64,16 +68,19 @@ class _$Weather extends Weather {
   @override
   final double wind;
 
-  factory _$Weather([void Function(WeatherBuilder)? updates]) => (new WeatherBuilder()..update(updates)).build();
+  factory _$Weather([void Function(WeatherBuilder)? updates]) =>
+      (new WeatherBuilder()..update(updates)).build();
 
-  _$Weather._({required this.temp, required this.updated, required this.wind}) : super._() {
+  _$Weather._({required this.temp, required this.updated, required this.wind})
+      : super._() {
     BuiltValueNullFieldError.checkNotNull(temp, 'Weather', 'temp');
     BuiltValueNullFieldError.checkNotNull(updated, 'Weather', 'updated');
     BuiltValueNullFieldError.checkNotNull(wind, 'Weather', 'wind');
   }
 
   @override
-  Weather rebuild(void Function(WeatherBuilder) updates) => (toBuilder()..update(updates)).build();
+  Weather rebuild(void Function(WeatherBuilder) updates) =>
+      (toBuilder()..update(updates)).build();
 
   @override
   WeatherBuilder toBuilder() => new WeatherBuilder()..replace(this);
@@ -81,17 +88,24 @@ class _$Weather extends Weather {
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is Weather && temp == other.temp && updated == other.updated && wind == other.wind;
+    return other is Weather &&
+        temp == other.temp &&
+        updated == other.updated &&
+        wind == other.wind;
   }
 
   @override
   int get hashCode {
-    return $jf($jc($jc($jc(0, temp.hashCode), updated.hashCode), wind.hashCode));
+    return $jf(
+        $jc($jc($jc(0, temp.hashCode), updated.hashCode), wind.hashCode));
   }
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('Weather')..add('temp', temp)..add('updated', updated)..add('wind', wind))
+    return (newBuiltValueToStringHelper('Weather')
+          ..add('temp', temp)
+          ..add('updated', updated)
+          ..add('wind', wind))
         .toString();
   }
 }
@@ -139,9 +153,12 @@ class WeatherBuilder implements Builder<Weather, WeatherBuilder> {
   _$Weather build() {
     final _$result = _$v ??
         new _$Weather._(
-            temp: BuiltValueNullFieldError.checkNotNull(temp, 'Weather', 'temp'),
-            updated: BuiltValueNullFieldError.checkNotNull(updated, 'Weather', 'updated'),
-            wind: BuiltValueNullFieldError.checkNotNull(wind, 'Weather', 'wind'));
+            temp:
+                BuiltValueNullFieldError.checkNotNull(temp, 'Weather', 'temp'),
+            updated: BuiltValueNullFieldError.checkNotNull(
+                updated, 'Weather', 'updated'),
+            wind:
+                BuiltValueNullFieldError.checkNotNull(wind, 'Weather', 'wind'));
     replace(_$result);
     return _$result;
   }
