@@ -26,7 +26,7 @@ class AppEpics {
   Stream<Object> _getLocation(Stream<GetLocation> actions, EpicStore<AppState> store) {
     return actions
         .asyncMap((GetLocation action) => _locationApi.getLocation())
-        .expand<Object>((Location location) => [
+        .expand<Object>((Location location) => <Object>[
               GetLocationSuccessful(location),
               GetWeather(),
             ])
