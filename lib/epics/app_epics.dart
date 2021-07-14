@@ -24,19 +24,19 @@ class AppEpics {
   }
 
   Stream<Object> _getLocation(Stream<GetLocation> actions, EpicStore<AppState> store) {
-    return actions
+    return actions //
         .asyncMap((GetLocation action) => _locationApi.getLocation())
-        .expand<Object>((Location location) => <Object>[
-              GetLocationSuccessful(location),
-              GetWeather(),
-            ])
-        .onErrorReturnWith((Object error, StackTrace stackTrace) => GetLocationError(error));
+        .expand((Location location) {
+      return <Object>[
+        GetLocationSuccessful(location),
+        GetWeather(),
+      ];
+    }).onErrorReturnWith((Object error, StackTrace stackTrace) => GetLocationError(error));
   }
 
   Stream<dynamic> _getWeather(Stream<GetWeather> actions, EpicStore<AppState> store) {
-    return actions
-        .asyncMap((GetWeather action) =>
-            _weatherApi.getWeather(store.state.location != null ? store.state.location!.city : 'Bucharest'))
+    return actions //
+        .asyncMap((GetWeather action) => _weatherApi.getWeather(store.state.location!.city))
         .map<Object>((Weather weather) => GetWeatherSuccessful(weather))
         .onErrorReturnWith((Object error, StackTrace stackTrace) => GetWeatherError(error));
   }
