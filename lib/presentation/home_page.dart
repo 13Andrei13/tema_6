@@ -2,8 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:tema6_weather/container/location_container.dart';
 import 'package:tema6_weather/container/weather_container.dart';
-import 'package:tema6_weather/models/location.dart';
-import 'package:tema6_weather/models/weather.dart';
+import 'package:tema6_weather/models/index.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);

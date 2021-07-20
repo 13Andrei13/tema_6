@@ -7,7 +7,7 @@ import 'package:tema6_weather/actions/get_location.dart';
 import 'package:tema6_weather/data/location_api.dart';
 import 'package:tema6_weather/data/weather_api.dart';
 import 'package:tema6_weather/epics/app_epics.dart';
-import 'package:tema6_weather/models/app_state.dart';
+import 'package:tema6_weather/models/index.dart';
 import 'package:tema6_weather/presentation/home_page.dart';
 import 'package:tema6_weather/reducer/reducer.dart';
 
@@ -32,7 +32,7 @@ void main() {
     ],
   );
 
-  store.dispatch(GetLocation());
+  store.dispatch(const GetLocationStart());
 
   runApp(MyApp(store: store));
 }

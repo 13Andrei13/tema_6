@@ -1,12 +1,6 @@
-import 'package:redux/redux.dart';
-import 'package:tema6_weather/actions/get_location.dart';
-import 'package:tema6_weather/actions/get_weather.dart';
-import 'package:tema6_weather/data/location_api.dart';
-import 'package:tema6_weather/data/weather_api.dart';
-import 'package:tema6_weather/models/app_state.dart';
-import 'package:tema6_weather/models/location.dart';
-import 'package:tema6_weather/models/weather.dart';
 
+
+/*
 class AppMiddleware {
   AppMiddleware({required LocationApi locationApi, required WeatherApi weatherApi})
       : _locationApi = locationApi,
@@ -43,3 +37,4 @@ class AppMiddleware {
     }
   }
 }
+*/

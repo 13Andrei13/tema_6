@@ -1,8 +1,6 @@
 import 'package:built_value/serializer.dart';
 import 'package:built_value/standard_json_plugin.dart';
-import 'package:tema6_weather/models/app_state.dart';
-import 'package:tema6_weather/models/location.dart';
-import 'package:tema6_weather/models/weather.dart';
+import 'package:tema6_weather/models/index.dart';
 
 part 'serializers.g.dart';
 
